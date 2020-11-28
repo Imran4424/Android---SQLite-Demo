@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
 
-            cursor = myDatabase.rawQuery("SELECT * FROM users WHERE name LIKE '%a%'", null);
+            cursor = myDatabase.rawQuery("SELECT * FROM users WHERE name LIKE '%a%' LIMIT 3", null);
 
             nameIndex = cursor.getColumnIndex("name");
             ageIndex = cursor.getColumnIndex("age");
