@@ -64,6 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
                 cursor.moveToNext();
             }
+
+            cursor = myDatabase.rawQuery("SELECT * FROM users WHERE age > 25 AND name = 'Imran'", null);
+
+            nameIndex = cursor.getColumnIndex("name");
+            ageIndex = cursor.getColumnIndex("age");
+
+            cursor.moveToFirst();
+            Log.i("Divide", "Showing users who is greater than 25 and name is Imran");
+            while (!cursor.isAfterLast()) {
+                Log.i("name", cursor.getString(nameIndex));
+                Log.i("age", cursor.getString(ageIndex));
+
+                cursor.moveToNext();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
