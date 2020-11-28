@@ -14,27 +14,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SQLiteDatabase myDatabase = this.openOrCreateDatabase("Users", MODE_PRIVATE, null);
+        try {
+            SQLiteDatabase myDatabase = this.openOrCreateDatabase("Users", MODE_PRIVATE, null);
 
-        myDatabase.execSQL("CREATE TABLE IF NOT EXISTS users (name VARCHAR, age INT(3))");
+            myDatabase.execSQL("CREATE TABLE IF NOT EXISTS users (name VARCHAR, age INT(3))");
 
-        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Munir', 28)");
-        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Imran', 23)");
-        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Anik', 26)");
+    //        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Munir', 28)");
+    //        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Imran', 23)");
+    //        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Anik', 26)");
 
-        Cursor cursor = myDatabase.rawQuery("SELECT * FROM USERS", null);
+            Cursor cursor = myDatabase.rawQuery("SELECT * FROM users", null);
 
-        int nameIndex = cursor.getColumnIndex("name");
-        int ageIndex = cursor.getColumnIndex("age");
+            int nameIndex = cursor.getColumnIndex("name");
+            int ageIndex = cursor.getColumnIndex("age");
 
-        cursor.moveToFirst();
+            cursor.moveToFirst();
 
-        while (cursor != null) {
-            Log.i("name", cursor.getString(nameIndex));
-            Log.i("age", cursor.getString(ageIndex));
+            while (cursor != null) {
+                Log.i("name", cursor.getString(nameIndex));
+                Log.i("age", cursor.getString(ageIndex));
 
-            cursor.moveToNext();
+                cursor.moveToNext();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 }
