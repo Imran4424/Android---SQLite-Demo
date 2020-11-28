@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             ageIndex = cursor.getColumnIndex("age");
 
             cursor.moveToFirst();
-
+            Log.i("Divide", "Showing users who is greater than 25");
             while (!cursor.isAfterLast()) {
                 Log.i("name", cursor.getString(nameIndex));
                 Log.i("age", cursor.getString(ageIndex));
