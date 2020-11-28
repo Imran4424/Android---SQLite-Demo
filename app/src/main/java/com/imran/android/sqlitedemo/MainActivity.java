@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
 
-            cursor = myDatabase.rawQuery("SELECT * FROM users WHERE age > 25 AND name = 'Imran'", null);
+            cursor = myDatabase.rawQuery("SELECT * FROM users WHERE name LIKE '%a%'", null);
 
             nameIndex = cursor.getColumnIndex("name");
             ageIndex = cursor.getColumnIndex("age");
 
             cursor.moveToFirst();
-            Log.i("Divide", "Showing users who is greater than 25 and name is Imran");
+            Log.i("Divide", "Showing users who name is like '.a.'");
             while (!cursor.isAfterLast()) {
                 Log.i("name", cursor.getString(nameIndex));
                 Log.i("age", cursor.getString(ageIndex));
