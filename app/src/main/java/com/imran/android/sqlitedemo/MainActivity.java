@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
             cursor.moveToFirst();
 
-            while (cursor != null) {
+            while (!cursor.isAfterLast()) {
                 Log.i("name", cursor.getString(nameIndex));
                 Log.i("age", cursor.getString(ageIndex));
 
