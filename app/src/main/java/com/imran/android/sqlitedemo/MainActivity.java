@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Imran', 23)");
     //        myDatabase.execSQL("INSERT INTO users (name, age) VALUES('Anik', 26)");
 
-            Cursor cursor = myDatabase.rawQuery("SELECT * FROM USERS", null);
+            Cursor cursor = myDatabase.rawQuery("SELECT * FROM users", null);
 
             int nameIndex = cursor.getColumnIndex("name");
             int ageIndex = cursor.getColumnIndex("age");
