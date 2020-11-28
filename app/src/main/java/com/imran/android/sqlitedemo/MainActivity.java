@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
 
+            myDatabase.execSQL("DELETE FROM users WHERE name  = 'Anik' LIMIT 1");
+
             cursor = myDatabase.rawQuery("SELECT * FROM users WHERE name LIKE '%a%' LIMIT 3", null);
 
             nameIndex = cursor.getColumnIndex("name");
